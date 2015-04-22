@@ -1,0 +1,20 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}BlueMediaTaskBundle:Item:notInStock{% endblock %}
+
+{% block body %}
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+        {% for item in items %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+    <a href="{{ path ('item_index') }}">Powrót</a>
+{% endblock %}

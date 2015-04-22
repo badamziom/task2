@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}BlueMediaTaskBundle:Item:getItem{% endblock %}
+
+{% block body %}
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Amount</th>
+        </tr>
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.amount }}</td>
+        </tr>
+
+    </table>
+{% endblock %}

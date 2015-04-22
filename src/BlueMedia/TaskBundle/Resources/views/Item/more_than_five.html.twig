@@ -1,0 +1,21 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}BlueMediaTaskBundle:Item:index{% endblock %}
+
+{% block body %}
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+        {% for item in items %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                <td><a href="{{ path('get_item', {'id': item.id}) }}">See item</a>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ path ('item_index') }}">Powrót</a>
+{% endblock %}
