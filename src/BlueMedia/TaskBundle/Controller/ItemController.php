@@ -29,7 +29,7 @@ class ItemController extends Controller {
         $id = $request->get('id');
 
         $restClient = $this->container->get('ci.restclient');
-        $data = $restClient->get('http://localhost:8000/items/' . $id);
+        $data = $restClient->get($this->container->getParameter('path_to_data') . '/items/' . $id);
         $item = json_decode($data->getContent(), TRUE);
 
         return array('item' => $item);
@@ -77,7 +77,7 @@ class ItemController extends Controller {
 
     public function getItems() {
         $restClient = $this->container->get('ci.restclient');
-        if ($data = $restClient->get('http://localhost:8000/items')) {
+        if ($data = $restClient->get($this->container->getParameter('path_to_data') . '/items')) {
             return json_decode($data->getContent(), TRUE);
         } else {
             $this->addFlash('error', 'Problem z pobraniem danych');
