@@ -29,7 +29,7 @@ class ItemController extends Controller {
         $id = $request->get('id');
 
         $restClient = $this->container->get('ci.restclient');
-        $data = $restClient->get($this->container->getParameter('path_to_data') . '/items/' . $id);
+        $data = $restClient->get($this->container->getParameter('path_to_data') . '/item/' . $id);
         $item = json_decode($data->getContent(), TRUE);
 
         return array('item' => $item);
@@ -79,7 +79,7 @@ class ItemController extends Controller {
         } else {
             $parameters = '';
         }
-        if ($data = $restClient->get($this->container->getParameter('path_to_data') . '/items' . $parameters)) {
+        if ($data = $restClient->get($this->container->getParameter('path_to_data') . '/item/' . $parameters)) {
             return json_decode($data->getContent(), TRUE);
         } else {
             $this->addFlash('error', 'Problem z pobraniem danych');
