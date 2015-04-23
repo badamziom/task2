@@ -40,11 +40,10 @@ class ItemController extends Controller {
      * @Template("BlueMediaTaskBundle:Item:in_stock.html.twig")
      */
     public function inStockAction() {
-        $items = $this->getItems();
-        foreach ($items as $key => $item) {
-            if ($item['amount'] == 0)
-                unset($items[$key]);
-        }
+        $params = array(
+            'inStock=true'
+        );
+        $items = $this->getItems($params);
         return array('items' => $items);
     }
 
@@ -53,11 +52,10 @@ class ItemController extends Controller {
      * @Template("BlueMediaTaskBundle:Item:not_in_stock.html.twig")
      */
     public function notInStockAction() {
-        $items = $this->getItems();
-        foreach ($items as $key => $item) {
-            if ($item['amount'] != 0)
-                unset($items[$key]);
-        }
+        $params = array(
+            'inStock=false'
+        );
+        $items = $this->getItems($params);
         return array('items' => $items);
     }
 
@@ -66,18 +64,22 @@ class ItemController extends Controller {
      * @Template("BlueMediaTaskBundle:Item:more_than_five.html.twig")
      */
     public function moreThanFiveItemsAction() {
-        $items = $this->getItems();
-        foreach ($items as $key => $item) {
-            if ($item['amount'] <= 5)
-                unset($items[$key]);
-        }
+        $params = array(
+            'minStock=5'
+        );
+        $items = $this->getItems($params);
 
         return array('items' => $items);
     }
 
-    public function getItems() {
+    public function getItems($params = array()) {
         $restClient = $this->container->get('ci.restclient');
-        if ($data = $restClient->get($this->container->getParameter('path_to_data') . '/items')) {
+        if (count($params) > 0) {
+            $parameters = '?' . implode(' &  ', $params);
+        } else {
+            $parameters = '';
+        }
+        if ($data = $restClient->get($this->container->getParameter('path_to_data') . '/items' . $parameters)) {
             return json_decode($data->getContent(), TRUE);
         } else {
             $this->addFlash('error', 'Problem z pobraniem danych');

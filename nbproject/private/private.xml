@@ -2,12 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/adam/Pulpit/Works/task2/src/BlueMedia/TaskBundle/Resources/views/Item/in_stock.html.twig</file>
-            <file>file:/home/adam/Pulpit/Works/task2/README.md</file>
-            <file>file:/home/adam/Pulpit/Works/task2/src/BlueMedia/TaskBundle/Resources/views/Item/index.html.twig</file>
-            <file>file:/home/adam/Pulpit/Works/task2/src/BlueMedia/TaskBundle/Resources/views/Item/more_than_five.html.twig</file>
-            <file>file:/home/adam/Pulpit/Works/task2/src/BlueMedia/TaskBundle/Controller/ItemController.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
